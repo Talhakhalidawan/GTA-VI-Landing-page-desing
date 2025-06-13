@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTA VI Website</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- 
+      Main container - This is the primary element that:
+      1. Gets pinned by GSAP ScrollTrigger (see script.js line 32-41)
+      2. Has a height that creates scrollable space for the animation
+      3. Contains all elements that will be animated
+    -->
+    <div class="container">
+      <!-- 
+        Black overlay that fades out during initial animation
+        This is animated using gsap.to() in script.js line 8-16
+        It covers the entire viewport initially and fades out over 2.8 seconds 
+      -->
+      <div class="overlay"></div>
+
+      <!-- 
+        First hero section containing both the logo and text
+        This entire container gets scaled down using tl.to() in script.js line 128
+        Eventually gets completely hidden using tl.set() in script.js line 158
+      -->
+      <div class="hero-1-container">
+        <!-- 
+          Main container with background image and logo
+          Initial scale is set in CSS (1.25) and animated in multiple steps:
+          1. Initial animation from 1.45 using gsap.from() in script.js line 3-6
+          2. Scale is set to 1.25 using tl.set() in script.js line 43-45
+          3. Scaled down to 1.0 during scroll using tl.to() in script.js line 47-50
+          4. Background size is reduced from 1000vh to 28vh in script.js line 69-76
+          5. Finally hidden with opacity: 0 in script.js line 126
+        -->
+        <div class="hero-main-container">
+          <!-- 
+            Main GTA logo that appears first and fades out
+            Fades out using tl.to() in script.js line 52-58 
+          -->
+          <img
+            class="hero-main-logo"
+            draggable="false"
+            src="./assets/gta_logo_cut.webp"
+            alt="gta logo"
+          />
+          <!-- 
+            Background hero image that fades out after the logo
+            Fades out using tl.to() in script.js line 60-67 
+          -->
+          <img
+            class="hero-main-image"
+            draggable="false"
+            src="./assets/gta_hero.webp"
+            alt="gta logo"
+          />
+        </div>
+
+        <!-- 
+          Container for the purple GTA logo and release date text
+          This becomes visible after the initial hero elements fade out
+        -->
+        <div class="hero-text-logo-container">
+          <!-- 
+            Purple GTA logo - fades in and then out
+            1. Fades in with mask animation in script.js line 101-124
+            2. Later fades out in script.js line 149-156 
+          -->
+          <div class="hero-text-logo"></div>
+          <div>
+            <!-- 
+              Release date text with gradient background
+              The gradient background is animated from one color scheme to another
+              using tl.fromTo() in script.js line 78-99 
+            -->
+            <h3 class="hero-text">
+              Coming<br />
+              May 26<br />
+              2026
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- 
+        Second hero section with Vice City text content
+        Initially hidden (opacity: 0, visibility: hidden in CSS)
+        1. Made visible with tl.set() in script.js line 159
+        2. Fades in with tl.to() in script.js line 161
+        3. Background gradient animated in script.js line 163-184 
+      -->
+      <div class="hero-2-container">
+        <h3>Vice City, USA.</h3>
+        <p>
+          Jason and Lucia have always known the deck is stacked against them.
+          But when an easy score goes wrong, they find themselves on the darkest
+          side of the sunniest place in America, in the middle of a criminal
+          conspiracy stretching across the state of Leonida — forced to rely on
+          each other more than ever if they want to make it out alive.
+        </p>
+      </div>
+
+      <!-- 
+        Scroll indicator arrow that bounces to hint user to scroll
+        Animated using a separate bounceTimeline in script.js line 18-30
+        This animation is independent of the scroll and runs continuously 
+      -->
+      <div class="scroll-indicator">
+        <svg
+          width="34"
+          height="14"
+          viewBox="0 0 34 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M33.5609 1.54346C34.0381 2.5875 33.6881 3.87821 32.7791 4.42633L17.0387 13.9181L1.48663 4.42115C0.580153 3.86761 0.235986 2.57483 0.717909 1.53365C1.19983 0.492464 2.32535 0.097152 3.23182 0.650692L17.0497 9.08858L31.051 0.64551C31.96 0.0973872 33.0837 0.499411 33.5609 1.54346Z"
+            fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 
+      Loading the GSAP libraries and custom script
+      1. Core GSAP library - provides animation capabilities
+      2. ScrollTrigger plugin - enables scroll-based animations
+      3. Custom script.js - contains all animation logic for this page 
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html> 
